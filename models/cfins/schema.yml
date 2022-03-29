@@ -1,0 +1,17 @@
+
+version: 2
+
+sources:
+  - name: sch_stg
+    database: db_cf_edw
+    schema: sch_stg
+    tables:
+      - name: writingcompany
+
+
+models:
+    - name: test_01
+      description: "A first dbt model for testing writingcompany table"
+      columns:
+          - name: writingcompanyid
+            description: "The primary key for this table"

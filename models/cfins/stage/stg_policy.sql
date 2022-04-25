@@ -1,5 +1,6 @@
 {{config ( 
-    materialized ='table'
+    materialized ='table',
+    tags =["stg"]
 )}}
 
 with policy_fcw as ( 

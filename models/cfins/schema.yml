@@ -10,16 +10,17 @@ sources:
 
 
 models:
-    - name: test_01
-      description: "A first dbt model for testing writingcompany table"
-      columns:
-          - name: writingcompanyid
-            description: "The primary key for this table"
     - name: stg_coverage
+      config:
+        tags: 
+          - tag_in_schema
       description: coverage staging table
       columns:
           - name: policy_key
     - name: stg_policy
+      config:
+        tags: 
+          - tag_in_schema    
       description: policy staging table
       columns:
           - name: policy_specification_key

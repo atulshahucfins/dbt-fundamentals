@@ -21,8 +21,8 @@ c2.coverage_code_id Coverage_Code_ID,
 'NA' Active_Ind,
 'NA'Transaction_Key
           
-from CF_PreStaging.Public.DWXP050 c1
-left join "DBT_STAGE"."DBT_ASHAHU"."STG_COVERAGE_CODE" c2
+from {{source('CF_PreStaging','DWXP050')}} c1
+left join {{ref('stg_coverage_code')}} c2
 on concat(trim(c1.PROD),'||',trim(c1.INTCOV)) = C2.coverage_code
 and c2.coverage_source ='FC_WINS'
 ),
@@ -44,8 +44,8 @@ c2.coverage_code_id Coverage_Code_ID,
 'NA' Coverage_Start_Dt,
 'NA' Active_Ind,
 'NA'Transaction_Key           
-from CF_PreStaging.Public.CF2FLT150P_DWXP050 c1
-left join "DBT_STAGE"."DBT_ASHAHU"."STG_COVERAGE_CODE" c2
+from {{source('CF_PreStaging','CF2FLT150P_DWXP050')}} c1
+left join {{ref('stg_coverage_code')}} c2
 on concat(trim(c1.PROD),'||',trim(c1.INTCOV)) = C2.coverage_code
 and c2.coverage_source ='CF_WINS'
 )

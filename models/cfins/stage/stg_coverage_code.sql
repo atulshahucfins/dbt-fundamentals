@@ -13,7 +13,7 @@
    date(nvl(nullifzero(EFFDTE),99991231),'YYYYMMDD') as start_date,
    date(nvl(nullifzero(ENDDTE),99991231),'YYYYMMDD') as end_date
    
-   from "PRD_CAESAR_RL_DB"."WINSCF"."DWXF024"
+   from {{source('PRD_CAESAR_RL_DB_WINSCF','DWXF024')}}
  ),
  coverage_code_winscf_rnk as(
  select *, iff(current_date>end_date,'N','Y') as ACTIVE, row_number() over( partition by coverage_code_id order by start_date desc) rnk
@@ -30,7 +30,7 @@ coverage_code_winsfc as
    date(nvl(nullifzero(ENDDTE),99991231),'YYYYMMDD') as end_date
  
    
-   from "PRD_CAESAR_RL_DB"."WINSFC"."DWXF024"
+   from {{source('PRD_CAESAR_RL_DB_WINSFC','DWXF024')}}
     where enddte<>20111131
  ),
   coverage_code_winsfc_rnk as(

@@ -2,11 +2,24 @@
 version: 2
 
 sources:
-  - name: sch_stg
-    database: db_cf_edw
-    schema: sch_stg
+  - name: CF_PreStaging
+    database: CF_PreStaging
+    schema: Public
     tables:
-      - name: writingcompany
+      - name: CF2FLT150P_DWXP050
+      - name: DWXP050
+      - name: CF2FLT150P_DWXP010
+      - name: DWXP010
+  - name: PRD_CAESAR_RL_DB_WINSCF
+    database: PRD_CAESAR_RL_DB
+    schema: WINSCF
+    tables:
+      - name: DWXF024
+  - name: PRD_CAESAR_RL_DB_WINSFC
+    database: PRD_CAESAR_RL_DB
+    schema: WINSFC
+    tables:
+      - name: DWXF024
 
 
 models:
@@ -24,3 +37,10 @@ models:
       description: policy staging table
       columns:
           - name: policy_specification_key
+    - name: stg_coverage_code
+      config:
+        tags: 
+          - tag_in_schema    
+      description: coverage code reference staging table
+      columns:
+          - name: coverage_code_id

@@ -37,8 +37,8 @@ coverage_code_winsfc as
  select *, iff(current_date>end_date,'N','Y') as ACTIVE, row_number() over( partition by coverage_code_id order by start_date desc) rnk
  from coverage_code_winsfc
  )
- select * from coverage_code_winscf_rnk
+ select coverage_code_id,coverage_source,coverage_code,coverage_description,start_date,end_date,active from coverage_code_winscf_rnk
  where rnk=1
  union all
- select * from coverage_code_winsfc_rnk
+ select coverage_code_id,coverage_source,coverage_code,coverage_description,start_date,end_date,active from coverage_code_winsfc_rnk
  where rnk=1

@@ -17,7 +17,7 @@ date(nullifzero(c1.EFFDTE),'YYYYMMDD')  Coverage_Effective_Dt,
 date(nullifzero(c1.COVEND),'YYYYMMDD')  Coverage_End_Dt,
 date(nullifzero(c1.EXPDTE),'YYYYMMDD')  Coverage_Expiration_Dt,
 c2.coverage_code_id Coverage_Code_ID,
-'NA' Coverage_Start_Dt,
+try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24MISSFF9') Coverage_Start_Dt,
 'NA' Active_Ind,
 'NA'Transaction_Key
           
@@ -41,7 +41,7 @@ date(nullifzero(c1.EFFDTE),'YYYYMMDD')  Coverage_Effective_Dt,
 date(nullifzero(c1.COVEND),'YYYYMMDD')  Coverage_End_Dt,
 date(nullifzero(c1.EXPDTE),'YYYYMMDD')  Coverage_Expiration_Dt,
 c2.coverage_code_id Coverage_Code_ID,
-'NA' Coverage_Start_Dt,
+try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24MISSFF9') Coverage_Start_Dt,
 'NA' Active_Ind,
 'NA'Transaction_Key           
 from {{source('CF_PreStaging','CF2FLT150P_DWXP050')}} c1

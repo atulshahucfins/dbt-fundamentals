@@ -14,7 +14,7 @@ date(nullifzero(EXPDTE),'YYYYMMDD')  Policy_Expiration_Date,
 POLTRM Policy_Term
 
 FROM 
- {{source('CF_PreStaging','DWXP010')}} ),
+ {{source('PRD_CAESAR_RL_DB_WINSFC','DWXP010')}} ),
 
 policy_cfw as(
 select
@@ -28,7 +28,7 @@ FIELDF Product_specification_key,
 POLTRM Policy_Term
 
 FROM 
-{{source('CF_PreStaging','CF2FLT150P_DWXP010')}})
+{{source('PRD_CAESAR_RL_DB_WINSCF','DWXP010')}})
 
 select concat('FCW','|',Policy_Number,'|',Policy_Effective_Date) Product_specification_key,Policy_Number,Source_System_ID,Writing_Company_ID,Business_Type,
 Policy_Effective_Date,Policy_Expiration_Date,Policy_Term from policy_fcw

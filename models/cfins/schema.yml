@@ -15,11 +15,15 @@ sources:
     schema: WINSCF
     tables:
       - name: DWXF024
+      - name: DWXP010
+      - name: DWXP050
   - name: PRD_CAESAR_RL_DB_WINSFC
     database: PRD_CAESAR_RL_DB
     schema: WINSFC
     tables:
       - name: DWXF024
+      - name: DWXP010
+      - name: DWXP050      
 
 
 models:
@@ -44,3 +48,10 @@ models:
       description: coverage code reference staging table
       columns:
           - name: coverage_code_id
+    - name: stg_physical_object
+      config:
+        tags: 
+          - tag_in_schema    
+      description: physical object staging table
+      columns:
+          - name: coverage_code_id      

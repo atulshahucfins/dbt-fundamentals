@@ -21,7 +21,7 @@ try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24M
 'NA' Active_Ind,
 'NA'Transaction_Key
           
-from {{source('CF_PreStaging','DWXP050')}} c1
+from {{source('PRD_CAESAR_RL_DB_WINSFC','DWXP050')}} c1
 left join {{ref('stg_coverage_code')}} c2
 on concat(trim(c1.PROD),'||',trim(c1.INTCOV)) = C2.coverage_code
 and c2.coverage_source ='FC_WINS'
@@ -44,7 +44,7 @@ c2.coverage_code_id Coverage_Code_ID,
 try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24MISSFF9') Coverage_Start_Dt,
 'NA' Active_Ind,
 'NA'Transaction_Key           
-from {{source('CF_PreStaging','CF2FLT150P_DWXP050')}} c1
+from {{source('PRD_CAESAR_RL_DB_WINSCF','DWXP050')}} c1
 left join {{ref('stg_coverage_code')}} c2
 on concat(trim(c1.PROD),'||',trim(c1.INTCOV)) = C2.coverage_code
 and c2.coverage_source ='CF_WINS'

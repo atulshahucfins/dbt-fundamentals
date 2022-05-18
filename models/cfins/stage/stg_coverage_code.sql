@@ -1,6 +1,6 @@
 {{config ( 
     materialized ='table',
-    tags =["ref_table"]
+    tags =["ref_table", "tag_in_code"]
 )}}
 
  

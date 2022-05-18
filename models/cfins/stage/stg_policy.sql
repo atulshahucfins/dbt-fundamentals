@@ -5,7 +5,7 @@
 
 with policy_fcw as ( 
 select 
-POLICYNUM Policy_Number,
+ltrim(POLICY,0) Policy_Number,
 RTEMTD Source_System_ID,
 CO Writing_Company_ID,
 DIRASS Business_Type,
@@ -18,7 +18,7 @@ FROM
 
 policy_cfw as(
 select
-POLICYNUM Policy_Number,
+ltrim(POLICY,0) Policy_Number,
 RTEMTD Source_System_ID,
 CO Writing_Company_ID,
 DIRASS Business_Type,

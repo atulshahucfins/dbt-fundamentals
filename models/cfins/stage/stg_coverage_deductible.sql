@@ -1,6 +1,6 @@
 {{config ( 
     materialized ='table',
-    tags =["tag_in_code"]
+    tags =["tag_in_code","deductible_entity"]
 )}}
 
 

@@ -55,3 +55,17 @@ models:
       description: physical object staging table
       columns:
           - name: coverage_code_id      
+    - name: stg_policy_deductible
+      config:
+        tags: 
+          - tag_in_schema    
+      description: policy deductible staging table
+      columns:
+          - name: coverage_code_id  
+    - name: stg_coverage_deductible
+      config:
+        tags: 
+          - tag_in_schema    
+      description: coverage deductible staging table
+      columns:
+          - name: coverage_code_id

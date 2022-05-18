@@ -34,8 +34,8 @@ select distinct ltrim(t1.POLICY,0) Policy_Number,
   'ProductsDeductible' as Deductible_Option , GPRDD as Deductible_Amount
   ,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
    date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date 
-  from "PRD_CAESAR_RL_DB"."WINSFC".DWGP020 t1
-  left join "PRD_CAESAR_RL_DB"."WINSFC".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
+  from "PRD_CAESAR_RL_DB"."WINSCF".DWGP020 t1
+  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
   where NULLIF(TRIM(GPRDD), '') is not null -- to remove records which are not having any GL premises value
 ),
 coverage_deductible_fc as
@@ -52,8 +52,8 @@ select distinct ltrim(t1.POLICY,0) Policy_Number,
   'GLPremisesDeductible' as Deductible_Option , GPMDD as Deductible_Amount
   ,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
    date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date  
-  from "PRD_CAESAR_RL_DB"."WINSCF".DWGP020 t1
-  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
+  from "PRD_CAESAR_RL_DB"."WINSFC".DWGP020 t1
+  left join "PRD_CAESAR_RL_DB"."WINSFC".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
   where  NULLIF(TRIM(GPMDD), '') is not null -- to remove records which are not having any GL premises value
 UNION ALL
 select distinct ltrim(t1.POLICY,0) Policy_Number,

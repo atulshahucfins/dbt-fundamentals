@@ -2,24 +2,70 @@
 version: 2
 
 sources:
-  - name: sch_stg
-    database: db_cf_edw
-    schema: sch_stg
+  - name: CF_PreStaging
+    database: CF_PreStaging
+    schema: Public
     tables:
-      - name: writingcompany
+      - name: CF2FLT150P_DWXP050
+      - name: DWXP050
+      - name: CF2FLT150P_DWXP010
+      - name: DWXP010
+  - name: PRD_CAESAR_RL_DB_WINSCF
+    database: PRD_CAESAR_RL_DB
+    schema: WINSCF
+    tables:
+      - name: DWXF024
+      - name: DWXP010
+      - name: DWXP050
+  - name: PRD_CAESAR_RL_DB_WINSFC
+    database: PRD_CAESAR_RL_DB
+    schema: WINSFC
+    tables:
+      - name: DWXF024
+      - name: DWXP010
+      - name: DWXP050      
 
 
 models:
-    - name: test_01
-      description: "A first dbt model for testing writingcompany table"
-      columns:
-          - name: writingcompanyid
-            description: "The primary key for this table"
     - name: stg_coverage
+      config:
+        tags: 
+          - tag_in_schema
       description: coverage staging table
       columns:
           - name: policy_key
     - name: stg_policy
+      config:
+        tags: 
+          - tag_in_schema    
       description: policy staging table
       columns:
           - name: policy_specification_key
+    - name: stg_coverage_code
+      config:
+        tags: 
+          - tag_in_schema    
+      description: coverage code reference staging table
+      columns:
+          - name: coverage_code_id
+    - name: stg_physical_object
+      config:
+        tags: 
+          - tag_in_schema    
+      description: physical object staging table
+      columns:
+          - name: coverage_code_id      
+    - name: stg_policy_deductible
+      config:
+        tags: 
+          - tag_in_schema    
+      description: policy deductible staging table
+      columns:
+          - name: coverage_code_id  
+    - name: stg_coverage_deductible
+      config:
+        tags: 
+          - tag_in_schema    
+      description: coverage deductible staging table
+      columns:
+          - name: coverage_code_id

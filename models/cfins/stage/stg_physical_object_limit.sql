@@ -294,45 +294,45 @@ UNION ALL
   left join "PRD_CAESAR_RL_DB"."WINSFC".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
   where  NULLIF(TRIM(BUSPPT), '') is not null -- to remove records which are not having any BOPBuildingLimit value  
 )
-//,
-//physical_object_limit_cf as 
-//(
-//      --ESPropertyLimitAttachmentPoint         
-//  select distinct ltrim(t1.POLICY,0) Policy_Number,
-//  concat('CFW',cast ((ltrim(t2.POLICY,0)) as varchar(50)),'||',
-//              cast ((ltrim(t2.EFFDTE,0)) as varchar(50)),'||',
-//             ltrim(t2.LOCNUM,0),'||',
-//             ltrim(t2.BLDNUM,0),'||',
-//             ltrim(t2.PRMSTE,0),'||',
-//             ltrim(t2.CLASX,0),'||',
-//             ltrim(t2.SUBLN,0),'||',
-//             ltrim(t2.INTCOV,0)) as Coverage_Key,t2.BLDNUM as Building_Number, t2.LOCNUM as Location_Number,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
-//   date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date , t1.EDSNO, 'ES'  as Limit_Type, 
-//  'PropertyLimitAttachmentPoint' as Limit_Option , ATCHPOIN    as Limit_Amount
-//  from "PRD_CAESAR_RL_DB"."WINSCF".DWXE010   t1
-//  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
-//  where  NULLIF(TRIM(ATCHPOIN ), '') is not null -- to remove records which are not having any ESPropertyLimitAttachmentPoint value
-//UNION ALL
-//      --ESPropertyLimit         
-//  select distinct ltrim(t1.POLICY,0) Policy_Number,
-//  concat('CFW',cast ((ltrim(t2.POLICY,0)) as varchar(50)),'||',
-//              cast ((ltrim(t2.EFFDTE,0)) as varchar(50)),'||',
-//             ltrim(t2.LOCNUM,0),'||',
-//             ltrim(t2.BLDNUM,0),'||',
-//             ltrim(t2.PRMSTE,0),'||',
-//             ltrim(t2.CLASX,0),'||',
-//             ltrim(t2.SUBLN,0),'||',
-//             ltrim(t2.INTCOV,0)) as Coverage_Key,t2.BLDNUM as Building_Number, t2.LOCNUM as Location_Number,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
-////   date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date , t1.EDSNO, 'ES'  as Limit_Type, 
-//  'PropertyLimit' as Limit_Option , ATCHPOIN    as Limit_Amount
-//  from "PRD_CAESAR_RL_DB"."WINSCF".DWXE010   t1
-//  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
-//  where  NULLIF(TRIM(ATCHPOIN ), '') is not null -- to remove records which are not having any ESPropertyLimit value  
-//)
+,
+physical_object_limit_cf as 
+(
+      --ESPropertyLimitAttachmentPoint         
+  select distinct ltrim(t1.POLICY,0) Policy_Number,
+  concat('CFW',cast ((ltrim(t2.POLICY,0)) as varchar(50)),'||',
+              cast ((ltrim(t2.EFFDTE,0)) as varchar(50)),'||',
+             ltrim(t2.LOCNUM,0),'||',
+             ltrim(t2.BLDNUM,0),'||',
+             ltrim(t2.PRMSTE,0),'||',
+             ltrim(t2.CLASX,0),'||',
+             ltrim(t2.SUBLN,0),'||',
+             ltrim(t2.INTCOV,0)) as Coverage_Key,t2.BLDNUM as Building_Number, t2.LOCNUM as Location_Number,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
+   date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date , t1.EDSNO, 'ES'  as Limit_Type, 
+  'PropertyLimitAttachmentPoint' as Limit_Option , ATCHPOIN    as Limit_Amount
+  from "PRD_CAESAR_RL_DB"."WINSCF".DWXE010   t1
+  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
+  where  NULLIF(TRIM(ATCHPOIN ), '') is not null -- to remove records which are not having any ESPropertyLimitAttachmentPoint value
+UNION ALL
+      --ESPropertyLimit         
+  select distinct ltrim(t1.POLICY,0) Policy_Number,
+  concat('CFW',cast ((ltrim(t2.POLICY,0)) as varchar(50)),'||',
+              cast ((ltrim(t2.EFFDTE,0)) as varchar(50)),'||',
+             ltrim(t2.LOCNUM,0),'||',
+             ltrim(t2.BLDNUM,0),'||',
+             ltrim(t2.PRMSTE,0),'||',
+             ltrim(t2.CLASX,0),'||',
+             ltrim(t2.SUBLN,0),'||',
+             ltrim(t2.INTCOV,0)) as Coverage_Key,t2.BLDNUM as Building_Number, t2.LOCNUM as Location_Number,date(nullifzero(t1.EFFDTE),'YYYYMMDD') Effective_Date,
+   date(nullifzero(t2.EXPDTE),'YYYYMMDD') Expiration_Date , t1.EDSNO, 'ES'  as Limit_Type, 
+  'PropertyLimit' as Limit_Option , ATCHPOIN    as Limit_Amount
+  from "PRD_CAESAR_RL_DB"."WINSCF".DWXE010   t1
+  left join "PRD_CAESAR_RL_DB"."WINSCF".DWXP050 t2 on t1.policy=t2.policy and t1.EFFDTE=t2.EFFDTE and t1.EDSNO=t2.EDSNO
+  where  NULLIF(TRIM(ATCHPOIN ), '') is not null -- to remove records which are not having any ESPropertyLimit value  
+)
 select concat('FCW','|',Policy_Number,'|',Effective_Date) Product_specification_key, Coverage_Key,concat(Location_number,'||',Building_number,'||',Policy_Number) as Physical_object_Key, Limit_Type, Limit_Option, Limit_Amount,
 Effective_Date, Expiration_Date , dateadd(ns,EDSNO*100,Effective_Date) as Start_Date
 from physical_object_limit_fc
-//UNION ALL
-//select concat('CFW','|',Policy_Number,'|',Effective_Date) Product_specification_key, Coverage_Key,concat(Location_number,'||',Building_number,'||',Policy_Number) as Physical_object_Key,Limit_Type, Limit_Option, Limit_Amount,
-//Effective_Date, Expiration_Date , dateadd(ns,EDSNO*100,Effective_Date) as Start_Date
-//from physical_object_limit_cf
+UNION ALL
+select concat('CFW','|',Policy_Number,'|',Effective_Date) Product_specification_key, Coverage_Key,concat(Location_number,'||',Building_number,'||',Policy_Number) as Physical_object_Key,Limit_Type, Limit_Option, Limit_Amount,
+Effective_Date, Expiration_Date , dateadd(ns,EDSNO*100,Effective_Date) as Start_Date
+from physical_object_limit_cf

@@ -2,7 +2,7 @@
   config(
     materialized='incremental',
     tags =["physical_object_limit","gold"],
-    pre_hook ='use warehouse WH_CL_RPT'
+    pre_hook ='use warehouse WH_CL_LOAD_XL'
   )
 }}
 

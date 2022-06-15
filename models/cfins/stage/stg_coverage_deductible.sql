@@ -72,7 +72,7 @@ select concat('CFW','||',Policy_Number,'||',Effective_Date) Product_specificatio
 Effective_Date, Expiration_Date , dateadd(ns,EDSNO*100,Effective_Date) as Start_Date
 from coverage_deductible_cf
 UNION ALL
-select concat('FCW','||',Policy_Number,'||',Effective_Date) Product_specification_key,  nvl(concat('CFW','||',Policy_Number,'||',
+select concat('FCW','||',Policy_Number,'||',Effective_Date) Product_specification_key,  nvl(concat('FCW','||',Policy_Number,'||',
               Effective_Date,'||',building_number,'||',PRMSTE,'||', CLASX,'||', SUBLN,'||',internal_coverage),'NA') Coverage_Key ,
   Deductible_Type, Deductible_Option, Deductible_Amount,
 Effective_Date, Expiration_Date , dateadd(ns,EDSNO*100,Effective_Date) as Start_Date

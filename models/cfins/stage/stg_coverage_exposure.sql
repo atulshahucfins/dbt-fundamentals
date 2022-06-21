@@ -12,7 +12,7 @@ ltrim(PRMSTE,0) PRMSTE,
 ltrim(CLASX,0) CLASX,
 ltrim(SUBLN,0) SUBLN,
 ltrim(INTCOV,0) internal_coverage, date(nullifzero(EFFDTE),'YYYYMMDD') Effective_Date,
-   date(nvl(nullifzero(EXPDTE),99991231),'YYYYMMDD') Expiration_Date ,EXPANN Exposure_Amount,EXPOSE Exposure_Count, 'NA'  Exposure_Type,
+   date(nvl(nullifzero(EXPDTE),99991231),'YYYYMMDD') Expiration_Date ,EXPOSE Exposure_Amount,EXPANN  Exposure_Count, 'NA'  Exposure_Type,
   try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24MISSFF9') start_date
   from  {{source('PRD_CAESAR_RL_DB_WINSCF','DWXP050')}}
 )
@@ -26,7 +26,7 @@ ltrim(PRMSTE,0) PRMSTE,
 ltrim(CLASX,0) CLASX,
 ltrim(SUBLN,0) SUBLN,
 ltrim(INTCOV,0) internal_coverage,date(nullifzero(EFFDTE),'YYYYMMDD') Effective_Date,
-   date(nvl(nullifzero(EXPDTE),99991231),'YYYYMMDD') Expiration_Date ,EXPANN Exposure_Amount,EXPOSE Exposure_Count, CONLIM  Exposure_Type,--LEXPIND ,
+   date(nvl(nullifzero(EXPDTE),99991231),'YYYYMMDD') Expiration_Date ,EXPOSE Exposure_Amount,EXPANN  Exposure_Count, CONLIM  Exposure_Type,--LEXPIND ,
   try_to_timestamp_ntz(concat(TRDATE::varchar,' ',TRTIME::varchar),'YYYYMMDD HH24MISSFF9') start_date
   from  {{source('PRD_CAESAR_RL_DB_WINSFC','DWXP050')}}
 ),

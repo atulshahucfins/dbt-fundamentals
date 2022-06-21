@@ -1,7 +1,7 @@
 {{
   config(
     materialized='incremental',
-    tags =["coverage_exposure","gold"]
+    tags =["coverage_exposure","gold","exposure_entity"]
   )
 }}
 

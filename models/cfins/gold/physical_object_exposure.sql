@@ -1,7 +1,7 @@
 {{
   config(
     materialized='incremental',
-    tags =["physical_object_exposure","gold"]
+    tags =["physical_object_exposure","gold","exposure_entity"]
   )
 }}
 

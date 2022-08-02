@@ -6,10 +6,11 @@
 }}
 
 
-select distinct policy_id policy_id ,
+with final as (
+select  distinct 
   product_specification_key ,
   policy_number ,
-  NVL(NULLIF(TRIM(SOURCE_SYSTEM_ID ), ''),'NA') source_system_id ,
+  source_system_id ,
   writing_company_id ,
   business_type ,
   policy_effective_date ,
@@ -22,4 +23,20 @@ select distinct policy_id policy_id ,
   current_user created_user,
   current_user modified_user
 from {{ref('stg_policy')}}
-where sha2_record not in (select sha2_record from  {{ this }} )
+where sha2_record not in (select sha2_record from  {{ this }} ))
+select seq_policy.NEXTVAL policy_id ,
+  product_specification_key ,
+  policy_number ,
+  source_system_id ,
+  writing_company_id ,
+  business_type ,
+  policy_effective_date ,
+  policy_expiration_date ,
+  policy_term ,
+  start_date,
+  sha2_record,
+  created_dttm,
+  modified_dttm,
+  created_user,
+  modified_user
+from final
